@@ -21,9 +21,7 @@
   (load-theme 'doom-acario-dark t))
 
 (defun god-mode-callback ()
-  (global-set-key (kbd "<escape>") 'god-mode-all)
-  (setq god-exempt-major-modes nil)
-  (setq god-exempt-predicates nil)
+  (global-set-key (kbd "<escape>") 'god-local-mode)
   (define-key god-local-mode-map (kbd "i") 'god-local-mode)
   (define-key god-local-mode-map (kbd ".") 'repeat)
   (global-set-key (kbd "C-x C-1") 'delete-other-windows)
@@ -61,17 +59,5 @@
   :config
   (magit-callback))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (emacs-dashboard yasnippet-snippets use-package pdf-tools god-mode doom-themes auto-complete))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
