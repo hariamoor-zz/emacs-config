@@ -20,18 +20,13 @@
   :config
   (load-theme 'doom-acario-dark t))
 
-(defun god-mode-callback ()
-  (global-set-key (kbd "<escape>") 'god-local-mode)
-  (define-key god-local-mode-map (kbd "i") 'god-local-mode)
-  (define-key god-local-mode-map (kbd ".") 'repeat)
-  (global-set-key (kbd "C-x C-1") 'delete-other-windows)
-  (global-set-key (kbd "C-x C-2") 'split-window-below)
-  (global-set-key (kbd "C-x C-3") 'split-window-right)
-  (global-set-key (kbd "C-x C-0") 'delete-window))
+(defun xah-fly-keys-callback ()
+  (xah-fly-keys-set-layout "qwerty")
+  (xah-fly-keys 1))
 
-(use-package god-mode
+(use-package xah-fly-keys
   :config
-  (god-mode-callback))
+  (xah-fly-keys-callback))
 
 (defun auto-complete-callback ()
   (global-auto-complete-mode t)
@@ -58,6 +53,14 @@
 (use-package magit
   :config
   (magit-callback))
+
+(defun pdf-tools-callback ()
+  (setq auto-revert-interval 0.5)
+  (auto-revert-set-timer))
+
+(use-package pdf-tools
+  :config
+  (pdf-tools-callback))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
