@@ -23,7 +23,7 @@
 
 (use-package doom-themes
   :config
-  (load-theme 'doom-acario-dark t))
+  (load-theme 'doom-sourcerer t))
 
 (defun xah-fly-keys-callback ()
   (xah-fly-keys-set-layout "qwerty")
