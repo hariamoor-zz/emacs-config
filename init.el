@@ -13,6 +13,8 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+(global-auto-revert-mode)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -25,25 +27,10 @@
   :config
   (load-theme 'doom-sourcerer t))
 
-(defun xah-fly-keys-callback ()
-  (xah-fly-keys-set-layout "qwerty")
-  (xah-fly-keys 1))
-
 (use-package xah-fly-keys
   :config
-  (xah-fly-keys-callback))
-
-(defun auto-complete-callback ()
-  (global-auto-complete-mode t)
-  (ac-config-default))
-
-(use-package auto-complete
-  :config
-  (auto-complete-callback))
-
-(use-package yasnippet
-  :config
-  (yas-global-mode 1))
+  (xah-fly-keys-set-layout "qwerty")
+  (xah-fly-keys 1))
 
 (use-package yasnippet-snippets)
 
@@ -51,21 +38,23 @@
   :config
   (dashboard-setup-startup-hook))
 
-(defun magit-callback ()
-  (global-set-key (kbd "C-x g") 'magit-status)
-  (global-set-key (kbd "C-x M-g") 'magit-dispatch))
-
 (use-package magit
-  :config
-  (magit-callback))
+  :bind
+  (("C-x g" . magit-status)
+   ("C-x M-g" . magit-dispatch)))
 
-(defun pdf-tools-callback ()
-  (setq auto-revert-interval 0.5)
-  (auto-revert-set-timer))
+(use-package auctex
+  :hook
+  (TeX-after-compilation-finished-functions . TeX-revert-document-buffer))
 
-(use-package pdf-tools
+(use-package company
+  :hook (after-init . global-company-mode))
+
+(use-package company-auctex
   :config
-  (pdf-tools-callback))
+  (company-auctex-init))
+
+(use-package smartparens)
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
