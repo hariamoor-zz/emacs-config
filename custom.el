@@ -10,7 +10,7 @@
  '(electric-pair-mode t)
  '(package-selected-packages
    (quote
-    (smartparens auctex-lua auctex-latexmk company-auctex company company-mode auctex xah-fly-keys yasnippet-snippets use-package pdf-tools magit god-mode doom-themes dashboard auto-complete))))
+    (aweshell exwm atomic-chrome bash-completion eshell-prompt-extras smart-tabs-mode smartparens auctex-lua auctex-latexmk company-auctex company company-mode auctex xah-fly-keys yasnippet-snippets use-package pdf-tools magit god-mode doom-themes dashboard auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
