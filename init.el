@@ -10,6 +10,3 @@
 
 (setq package-config-file (expand-file-name "package_config.el" user-emacs-directory))
 (load package-config-file)
-
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)

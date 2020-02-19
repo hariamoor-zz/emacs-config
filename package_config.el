@@ -59,7 +59,8 @@
 
 (use-package smartparens
   :config
-  (require 'smartparens-config))
+  (require 'smartparens-config)
+  (smartparens-strict-mode 1))
 
 (use-package eshell-prompt-extras
   :config
