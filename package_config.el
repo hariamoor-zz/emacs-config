@@ -80,3 +80,8 @@
   :magic ("%PDF" . pdf-view-mode)
   :hook
   (pdf-view-mode . pdf-links-minor-mode))
+
+(use-package company-shell
+  :defer 3
+  :config
+  (add-to-list 'company-backends 'company-shell))
