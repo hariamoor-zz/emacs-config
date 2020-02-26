@@ -2,7 +2,6 @@
 (setq package-enable-at-startup nil)
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
 (package-initialize)
@@ -47,7 +46,9 @@
 
 (use-package company
   :bind ("\t" . company-complete)
-  :hook (after-init . global-company-mode))
+  :hook (after-init . global-company-mode)
+  :config
+  (setq company-idle-delay 0))
 
 (use-package company-auctex
   :config
