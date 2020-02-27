@@ -1,3 +1,5 @@
+;; BOILERPLATE - NEED TO FIGURE OUT HOW TO REMOVE
+
 (package-initialize)
 (require 'package)
 
@@ -7,9 +9,18 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; END BOILERPLATE
+
 (eval-when-compile
   (require 'use-package)
   (setq use-package-always-ensure t))
+
+(use-package quelpa-use-package)
+
+(use-package dired+
+  :quelpa
+  (dired+ :fetcher url :url "https://www.emacswiki.org/emacs/download/dired+.el")
+  :defer 1)
 
 (use-package doom-themes
   :config
