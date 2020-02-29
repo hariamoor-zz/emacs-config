@@ -26,10 +26,11 @@
   :config
   (load-theme 'doom-sourcerer t))
 
-(use-package xah-fly-keys
+(use-package boon
   :config
-  (xah-fly-keys-set-layout "qwerty")
-  (xah-fly-keys 1))
+  (require 'boon-qwerty)
+  (require 'boon-tutorial)
+  (boon-mode))
 
 (use-package yasnippet
   :config
