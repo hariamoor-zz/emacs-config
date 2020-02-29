@@ -30,7 +30,9 @@
   :config
   (require 'boon-qwerty)
   (require 'boon-tutorial)
-  (boon-mode))
+  (boon-mode)
+  :bind
+  ("M-SPC" . boon-set-command-state))
 
 (use-package yasnippet
   :config
