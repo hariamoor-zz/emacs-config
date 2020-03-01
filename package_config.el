@@ -26,6 +26,11 @@
   :config
   (load-theme 'doom-sourcerer t))
 
+(use-package smartparens
+  :config
+  (require 'smartparens-config)
+  (smartparens-mode))
+
 (use-package boon
   :config
   (require 'boon-qwerty)
