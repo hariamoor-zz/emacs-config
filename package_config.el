@@ -29,7 +29,7 @@
 (use-package smartparens
   :config
   (require 'smartparens-config)
-  (smartparens-mode))
+  (smartparens-global-mode))
 
 (use-package boon
   :config
