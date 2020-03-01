@@ -58,7 +58,7 @@
 
 (use-package auctex
   :hook
-  (TeX-after-compilation-finished-functions . TeX-revert-document-buffer))
+  (TeX-after-compilation-finished-hook . TeX-revert-document-buffer))
 
 (use-package company
   :bind ("\t" . company-complete)
