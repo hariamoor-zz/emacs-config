@@ -62,6 +62,7 @@
   (setq company-idle-delay 0))
 
 (use-package company-auctex
+  :after company
   :config
   (company-auctex-init))
 
@@ -70,11 +71,11 @@
   (setq indent-tabs-mode t))
 
 (use-package eshell-prompt-extras
+  :after esh-opt
   :config
-  (with-eval-after-load "esh-opt"
-    (autoload 'epe-theme-lambda "eshell-prompt-extras")
-    (setq eshell-highlight-prompt nil
-	  eshell-prompt-function 'epe-theme-lambda)))
+  (autoload 'epe-theme-lambda "eshell-prompt-extras")
+  (setq eshell-highlight-prompt nil
+	eshell-prompt-function 'epe-theme-lambda))
 
 (use-package bash-completion
   :config
@@ -89,6 +90,6 @@
   (pdf-view-mode . pdf-links-minor-mode))
 
 (use-package company-shell
-  :defer 3
+  :after company
   :config
   (add-to-list 'company-backends 'company-shell))
