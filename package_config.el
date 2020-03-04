@@ -65,7 +65,7 @@
   (setq company-idle-delay 0))
 
 (use-package company-auctex
-  :after company
+  :requires company
   :config
   (company-auctex-init))
 
@@ -93,6 +93,6 @@
   (pdf-view-mode . pdf-links-minor-mode))
 
 (use-package company-shell
-  :after company
+  :requires company
   :config
   (add-to-list 'company-backends 'company-shell))
