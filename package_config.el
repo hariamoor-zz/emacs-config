@@ -18,9 +18,7 @@
 (use-package quelpa-use-package)
 
 (use-package dired+
-  :quelpa
-  (dired+ :fetcher url :url "https://www.emacswiki.org/emacs/download/dired+.el")
-  :defer 1)
+  :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus"))
 
 (use-package doom-themes
   :config
