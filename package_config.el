@@ -96,3 +96,9 @@
   :requires company
   :config
   (add-to-list 'company-backends 'company-shell))
+
+(use-package org
+  :bind
+  (("C-c l" . org-store-link)
+  ("C-c a" . org-agenda)
+  ("C-c c" . org-capture)))
