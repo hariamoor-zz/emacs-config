@@ -90,6 +90,7 @@
   :quelpa (pdf-tools :fetcher github :repo "politza/pdf-tools")
   :config
   (pdf-tools-install :no-query)
+  (setq-default pdf-view-display-size 'fit-page)
   :load-path "site-lisp/pdf-tools/lisp"
   :magic ("%PDF" . pdf-view-mode)
   :hook
