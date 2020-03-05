@@ -92,7 +92,7 @@
   (counsel-mode 1)
   (setq ivy-use-virtual-buffers t)
   :bind
-  ("C-s" . swiper-isearch)
+  (("C-s" . swiper-isearch)
   ("C-c c" . counsel-compile)
   ("C-c g". counsel-git)
   ("C-c j" . counsel-git-grep)
@@ -100,17 +100,16 @@
   ("C-c k" . counsel-rg)
   ("C-c m" . counsel-linux-app)
   ("C-x l" . counsel-locate)
-  ("C-c J" . counsel-file-jump))
-
+  ("C-c J" . counsel-file-jump)))
+  
 (use-package pdf-tools
-  :quelpa (pdf-tools :fetcher github :repo "politza/pdf-tools")
-  :config
-  (pdf-tools-install :no-query)
-  (setq-default pdf-view-display-size 'fit-page)
+  :pin manual
+  :hook
+  (pdf-view-mode . pdf-links-minor-mode)
   :load-path "site-lisp/pdf-tools/lisp"
   :magic ("%PDF" . pdf-view-mode)
-  :hook
-  (pdf-view-mode . pdf-links-minor-mode))
+  :config
+  (pdf-tools-install :no-query))
 
 (use-package company-shell
   :requires company
