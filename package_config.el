@@ -86,6 +86,22 @@
   :config
   (bash-completion-setup))
 
+(use-package ivy
+  :config
+  (ivy-mode 1)
+  (counsel-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  :bind
+  ("C-s" . swiper-isearch)
+  ("C-c c" . counsel-compile)
+  ("C-c g". counsel-git)
+  ("C-c j" . counsel-git-grep)
+  ("C-c L" . counsel-git-log)
+  ("C-c k" . counsel-rg)
+  ("C-c m" . counsel-linux-app)
+  ("C-x l" . counsel-locate)
+  ("C-c J" . counsel-file-jump))
+
 (use-package pdf-tools
   :quelpa (pdf-tools :fetcher github :repo "politza/pdf-tools")
   :config
