@@ -89,7 +89,7 @@
 (use-package pdf-tools
   :quelpa (pdf-tools :fetcher github :repo "politza/pdf-tools")
   :config
-  (pdf-tools-install :noquery)
+  (pdf-tools-install :no-query)
   :load-path "site-lisp/pdf-tools/lisp"
   :magic ("%PDF" . pdf-view-mode)
   :hook
