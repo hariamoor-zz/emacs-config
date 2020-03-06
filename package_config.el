@@ -103,7 +103,7 @@
   ("C-c J" . counsel-file-jump)))
   
 (use-package pdf-tools
-  :pin manual
+  :ensure nil
   :hook
   (pdf-view-mode . pdf-links-minor-mode)
   :load-path "site-lisp/pdf-tools/lisp"
