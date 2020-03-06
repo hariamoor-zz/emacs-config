@@ -15,9 +15,13 @@
   (require 'use-package)
   (setq use-package-always-ensure t))
 
-(use-package quelpa-use-package
+(use-package quelpa-use-package)
+
+(use-package async
   :config
-  (setq use-package-ensure-function 'quelpa))
+  (autoload 'dired-async-mode "dired-async.el" nil t)
+  (dired-async-mode 1)
+  (async-bytecomp-package-mode 1))
 
 (use-package dired+
   :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus"))
@@ -86,13 +90,17 @@
   :config
   (bash-completion-setup))
 
-(use-package ivy
+(use-package swiper
+  :quelpa (swiper :fetcher github :repo "abo-abo/swiper")
+  :load-path "site-lisp/swiper"
   :config
+  (with-eval-after-load 'ido
+    (ido-mode -1))
   (ivy-mode 1)
   (counsel-mode 1)
   (setq ivy-use-virtual-buffers t)
   :bind
-  (("C-s" . swiper-isearch)
+  (("\C-s" . swiper-isearch)
   ("C-c c" . counsel-compile)
   ("C-c g". counsel-git)
   ("C-c j" . counsel-git-grep)
@@ -115,9 +123,3 @@
   :requires company
   :config
   (add-to-list 'company-backends 'company-shell))
-
-(use-package org
-  :bind
-  (("C-c l" . org-store-link)
-  ("C-c a" . org-agenda)
-  ("C-c c" . org-capture)))
