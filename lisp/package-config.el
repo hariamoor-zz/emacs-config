@@ -133,4 +133,10 @@
   ("M-g e" . avy-goto-word-0)
   ("C-c C-j" . avy-resume)))
 
+(use-package ace-window
+  :config
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :bind
+  ("M-o" . ace-window))
+
 (provide 'package-config)
