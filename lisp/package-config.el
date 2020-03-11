@@ -84,7 +84,7 @@
   :config
   (autoload 'epe-theme-lambda "eshell-prompt-extras")
   (setq eshell-highlight-prompt nil
-	eshell-prompt-function 'epe-theme-lambda))
+	eshell-prompt-function 'epe-theme-dakrone))
 
 (use-package bash-completion
   :config
