@@ -90,17 +90,13 @@
   :config
   (bash-completion-setup))
 
-(use-package swiper
-  :quelpa (swiper :fetcher github :repo "abo-abo/swiper")
-  :load-path "site-lisp/swiper"
+(use-package counsel
+  :init
+  (setq enable-recursive-minibuffers t)
   :config
-  (with-eval-after-load 'ido
-    (ido-mode -1))
-  (ivy-mode 1)
-  (counsel-mode 1)
   (setq ivy-use-virtual-buffers t)
   :bind
-  (("\C-s" . swiper-isearch)
+  (("C-s" . swiper-isearch)
   ("C-c c" . counsel-compile)
   ("C-c g". counsel-git)
   ("C-c j" . counsel-git-grep)
@@ -108,8 +104,9 @@
   ("C-c k" . counsel-rg)
   ("C-c m" . counsel-linux-app)
   ("C-x l" . counsel-locate)
-  ("C-c J" . counsel-file-jump)))
-  
+  ("C-c J" . counsel-file-jump))
+  :hook (after-init . ivy-mode))
+
 (use-package pdf-tools
   :ensure nil
   :hook
@@ -134,3 +131,5 @@
   ("M-g w" . avy-goto-word-1)
   ("M-g e" . avy-goto-word-0)
   ("C-c C-j" . avy-resume)))
+
+(provide 'package-config)
