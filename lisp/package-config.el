@@ -61,8 +61,9 @@
    ("C-x M-g" . magit-dispatch)))
 
 (use-package auctex
+  :quelpa (auctex :fetcher github :repo "jwiegley/auctex")
   :hook
-  (TeX-after-compilation-finished-hook . TeX-revert-document-buffer))
+  (TeX-after-compilation-finished . TeX-revert-document-buffer))
 
 (use-package company
   :bind ("\t" . company-complete)
