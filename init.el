@@ -8,5 +8,5 @@
 
 (setq enable-recursive-minibuffers t)
 
-(setq package-config-file (expand-file-name "package_config.el" user-emacs-directory))
-(load package-config-file)
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'package-config)
