@@ -18,6 +18,7 @@
 (use-package quelpa-use-package)
 
 (use-package async
+  :quelpa (emacs-async :fetcher github :repo "jwiegley/emacs-async")
   :config
   (autoload 'dired-async-mode "dired-async.el" nil t)
   (dired-async-mode 1)
