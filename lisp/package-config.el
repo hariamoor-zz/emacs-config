@@ -135,7 +135,7 @@
 
 (use-package ace-window
   :config
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (setq aw-dispatch-always t)
   :bind
   ("M-o" . ace-window))
 
