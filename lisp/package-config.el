@@ -138,6 +138,6 @@
   :config
   (setq aw-dispatch-always t)
   :bind
-  ("M-o" . ace-window))
+  ("C-x o" . ace-window))
 
 (provide 'package-config)
