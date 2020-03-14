@@ -93,8 +93,6 @@
   (bash-completion-setup))
 
 (use-package counsel
-  :init
-  (setq enable-recursive-minibuffers t)
   :config
   (setq ivy-use-virtual-buffers t)
   :bind
