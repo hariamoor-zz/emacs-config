@@ -8,5 +8,7 @@
 
 (setq enable-recursive-minibuffers t)
 
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path (concat user-emacs-directory
+				(convert-standard-filename "lisp/")))
+
 (require 'package-config)
