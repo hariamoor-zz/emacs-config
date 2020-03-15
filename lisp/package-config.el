@@ -18,9 +18,7 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
-(use-package async
-  :straight (emacs-async :host github
-			 :repo "jwiegley/emacs-async")
+(use-package emacs-async
   :config
   (autoload 'dired-async-mode "dired-async.el" nil t)
   (dired-async-mode 1)
@@ -29,8 +27,7 @@
 (use-package diminish)
 
 (use-package dired+
-  :straight (dired+ :host github
-		    :repo "emacsmirror/dired-plus"))
+  :straight (:host github :repo "emacsmirror/dired-plus"))
 
 (use-package atom-one-dark-theme
   :config
@@ -75,9 +72,8 @@
   (("C-x g" . magit-status)
    ("C-x M-g" . magit-dispatch)))
 
-(use-package auctex
-  :straight (auctex :host github
-		    :repo "emacsmirror/auctex")
+(use-package tex-site
+  :straight auctex
   :hook
   (TeX-after-compilation-finished . TeX-revert-document-buffer))
 
