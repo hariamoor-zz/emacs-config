@@ -27,9 +27,16 @@
 (use-package dired+
   :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus"))
 
-(use-package doom-themes
+(use-package atom-one-dark-theme
   :config
-  (load-theme 'doom-sourcerer t))
+  (load-theme 'atom-one-dark t))
+
+(use-package smart-mode-line-atom-one-dark-theme)
+
+(use-package smart-mode-line
+  :config
+  (setq sml/theme 'atom-one-dark)
+  (sml/setup))
 
 (use-package smartparens
   :config
