@@ -1,33 +1,36 @@
-; BOILERPLATE - NEED TO FIGURE OUT HOW TO REMOVE
+;; straight.el bootstrap code
 
-(package-initialize)
-(require 'package)
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+;; END bootstrap code
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-;; END BOILERPLATE
-
-(eval-when-compile
-  (require 'use-package)
-  (setq use-package-always-ensure t))
-
-(use-package quelpa-use-package)
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
 
 (use-package async
-  :quelpa (emacs-async :fetcher github :repo "jwiegley/emacs-async")
+  :straight (emacs-async :host github
+			 :repo "jwiegley/emacs-async")
   :config
   (autoload 'dired-async-mode "dired-async.el" nil t)
   (dired-async-mode 1)
-  (async-bytecomp-package-mode 1))
+  (async-bytecomp-package-mode '(all)))
 
 (use-package diminish)
 
 (use-package dired+
-  :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus"))
+  :straight (dired+ :host github
+		    :repo "emacsmirror/dired-plus"))
 
 (use-package atom-one-dark-theme
   :config
@@ -73,7 +76,8 @@
    ("C-x M-g" . magit-dispatch)))
 
 (use-package auctex
-  :quelpa (auctex :fetcher github :repo "jwiegley/auctex")
+  :straight (auctex :host github
+		    :repo "jwiegley/auctex")
   :hook
   (TeX-after-compilation-finished . TeX-revert-document-buffer))
 
