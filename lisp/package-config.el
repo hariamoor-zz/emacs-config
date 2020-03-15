@@ -96,7 +96,6 @@
 (use-package eshell-prompt-extras
   :after esh-opt
   :config
-  (autoload 'epe-theme-lambda "eshell-prompt-extras")
   (setq eshell-highlight-prompt nil
 	eshell-prompt-function 'epe-theme-dakrone))
 
