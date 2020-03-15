@@ -21,8 +21,10 @@
 (use-package async 
   :config
   (autoload 'dired-async-mode "dired-async.el" nil t)
+  (autoload 'async-smtpmail-send-it "smtp-mail-async.el" nil t)
   (dired-async-mode 1)
-  (async-bytecomp-package-mode 1))
+  (async-bytecomp-package-mode 1)
+  (setq message-send-mail-function 'async-smtpmail-send-it))
 
 (use-package diminish)
 
@@ -33,10 +35,11 @@
   :config
   (load-theme 'atom-one-dark))
 
+(use-package smart-mode-line-atom-one-dark-theme)
+
 (use-package smart-mode-line
   :config
   (setq sml/theme 'atom-one-dark)
-  :ensure smart-mode-line-atom-one-dark-theme
   :hook
   (after-init . sml/setup))
 
