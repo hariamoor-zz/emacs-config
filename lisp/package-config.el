@@ -24,6 +24,8 @@
   (dired-async-mode 1)
   (async-bytecomp-package-mode 1))
 
+(use-package diminish)
+
 (use-package dired+
   :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus"))
 
@@ -39,9 +41,12 @@
   (sml/setup))
 
 (use-package smartparens
+  :diminish
+  (smartparens-global-mode)
+  (smartparens-mode)
   :config
   (require 'smartparens-config)
-  (smartparens-global-mode))
+  (smartparens-global-mode 1))
 
 (use-package boon
   :config
@@ -52,8 +57,9 @@
   :hook (after-init . boon-mode))
 
 (use-package yasnippet
-  :config
-  (yas-global-mode 1))
+  :diminish yas-global-mode
+  :hook
+  (after-init . yas-global-mode))
 
 (use-package yasnippet-snippets)
 
@@ -74,6 +80,7 @@
   (TeX-after-compilation-finished . TeX-revert-document-buffer))
 
 (use-package company
+  :diminish company-mode
   :bind ("\t" . company-complete)
   :hook (after-init . global-company-mode)
   :config
@@ -100,6 +107,7 @@
   (bash-completion-setup))
 
 (use-package counsel
+  :diminish ivy-mode counsel-mode
   :config
   (setq ivy-use-virtual-buffers t)
   :bind
