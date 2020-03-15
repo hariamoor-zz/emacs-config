@@ -15,9 +15,7 @@
   (require 'use-package)
   (setq use-package-always-ensure t))
 
-(use-package quelpa-use-package
-  :config
-  (setq use-package-ensure-function 'quelpa))
+(use-package quelpa-use-package)
 
 (use-package async
   :quelpa (emacs-async :fetcher github :repo "jwiegley/emacs-async")
@@ -33,19 +31,17 @@
 
 (use-package atom-one-dark-theme
   :config
-  (load-theme 'atom-one-dark t))
-
-(use-package smart-mode-line-atom-one-dark-theme)
+  (load-theme 'atom-one-dark))
 
 (use-package smart-mode-line
   :config
   (setq sml/theme 'atom-one-dark)
-  (sml/setup))
+  :ensure smart-mode-line-atom-one-dark-theme
+  :hook
+  (after-init . sml/setup))
 
 (use-package smartparens
-  :diminish
-  (smartparens-global-mode)
-  (smartparens-mode)
+  :diminish smartparens-global-mode smartparens-mode
   :config
   (require 'smartparens-config)
   (smartparens-global-mode 1))
@@ -59,7 +55,7 @@
   :hook (after-init . boon-mode))
 
 (use-package yasnippet
-  :diminish yas-global-mode
+  :diminish yas-minor-mode
   :hook
   (after-init . yas-global-mode))
 
@@ -109,7 +105,6 @@
   (bash-completion-setup))
 
 (use-package counsel
-  :diminish ivy-mode counsel-mode
   :config
   (setq ivy-use-virtual-buffers t)
   :bind
