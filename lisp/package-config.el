@@ -77,7 +77,7 @@
 
 (use-package auctex
   :straight (auctex :host github
-		    :repo "jwiegley/auctex")
+		    :repo "emacsmirror/auctex")
   :hook
   (TeX-after-compilation-finished . TeX-revert-document-buffer))
 
