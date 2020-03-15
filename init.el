@@ -6,6 +6,7 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+(setq custom-safe-themes t)
 (setq enable-recursive-minibuffers t)
 
 (add-to-list 'load-path (concat user-emacs-directory
