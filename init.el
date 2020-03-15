@@ -2,12 +2,11 @@
 (tool-bar-mode -1)
 
 (setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
-
-(setq custom-safe-themes t)
-(setq enable-recursive-minibuffers t)
+      `((".*" . ,temporary-file-directory))
+      auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t))
+      custom-safe-themes t
+      enable-recursive-minibuffers t)
 
 (add-to-list 'load-path (concat user-emacs-directory
 				(convert-standard-filename "lisp/")))
