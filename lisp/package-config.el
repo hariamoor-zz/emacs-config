@@ -75,7 +75,7 @@
 (use-package org)
 
 (use-package pdf-tools
-  :ensure nil
+  :no-build t
   :hook
   (pdf-view-mode . pdf-links-minor-mode)
   :load-path "site-lisp/pdf-tools/lisp"
