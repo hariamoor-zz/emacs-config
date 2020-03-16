@@ -92,6 +92,7 @@
   (selectrum-mode 1))
 
 (use-package smart-mode-line
+  :requires smart-mode-line-atom-one-dark-theme
   :config
   (setq sml/theme 'atom-one-dark)
   :hook
