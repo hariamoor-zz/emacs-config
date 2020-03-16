@@ -10,6 +10,10 @@
   :config
   (load-theme 'atom-one-dark))
 
+(use-package auctex
+  :hook
+  (TeX-after-compilation-finished . TeX-revert-document-buffer))
+
 (use-package bash-completion
   :config
   (bash-completion-setup))
@@ -109,11 +113,6 @@
 (use-package smart-tabs-mode
   :config
   (setq indent-tabs-mode t))
-
-(use-package tex-site
-  :straight auctex
-  :hook
-  (TeX-after-compilation-finished . TeX-revert-document-buffer))
 
 (use-package yasnippet
   :blackout yas-minor-mode
