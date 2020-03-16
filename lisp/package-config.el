@@ -60,13 +60,27 @@
   :straight auctex
   :hook
   (TeX-after-compilation-finished . TeX-revert-document-buffer))
-
+  
 (use-package company
   :blackout company-mode
   :bind ("\t" . company-complete)
   :hook (after-init . global-company-mode)
   :config
   (setq company-idle-delay 0))
+
+(use-package selectrum
+  :blackout
+  :straight (:host github :repo "raxod502/selectrum")
+  :config
+  (selectrum-mode 1))
+
+(use-package prescient
+  :blackout
+  :requires selectrum
+  :straight (selectrum-prescient
+	     :host github
+             :repo "raxod502/prescient.el"
+             :files ("selectrum-prescient.el")))
 
 (use-package company-auctex
   :requires company
@@ -86,13 +100,6 @@
 (use-package bash-completion
   :config
   (bash-completion-setup))
-
-(use-package counsel
-  :config
-  (setq ivy-use-virtual-buffers t)
-  :bind
-  ("C-s" . swiper-isearch)
-  :hook (after-init . ivy-mode))
 
 (use-package pdf-tools
   :ensure nil
