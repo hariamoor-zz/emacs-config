@@ -74,13 +74,6 @@
 
 (use-package org)
 
-(use-package pdf-tools
-  :ensure nil
-  :hook
-  (pdf-view-mode . pdf-links-minor-mode)
-  :load-path "site-lisp/pdf-tools/lisp"
-  :magic ("%PDF" . pdf-view-mode))
-
 (use-package prescient
   :blackout
   :requires selectrum
