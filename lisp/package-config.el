@@ -132,4 +132,6 @@
   :bind
   ("C-x o" . ace-window))
 
+(use-package org)
+
 (provide 'package-config)
