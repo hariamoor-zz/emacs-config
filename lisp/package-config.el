@@ -6,7 +6,8 @@
   (async-bytecomp-package-mode 1)
   (setq message-send-mail-function 'async-smtpmail-send-it))
 
-(use-package diminish)
+(use-package blackout
+  :straight (:host github :repo "raxod502/blackout"))
 
 (use-package dired+
   :straight (:host github :repo "emacsmirror/dired-plus"))
@@ -24,7 +25,7 @@
   (after-init . sml/setup))
 
 (use-package smartparens
-  :diminish smartparens-global-mode smartparens-mode
+  :blackout smartparens-minor-mode
   :config
   (require 'smartparens-config)
   (smartparens-global-mode 1))
@@ -38,7 +39,7 @@
   :hook (after-init . boon-mode))
 
 (use-package yasnippet
-  :diminish yas-minor-mode
+  :blackout yas-minor-mode
   :hook
   (after-init . yas-global-mode))
 
@@ -61,7 +62,7 @@
   (TeX-after-compilation-finished . TeX-revert-document-buffer))
 
 (use-package company
-  :diminish company-mode
+  :blackout company-mode
   :bind ("\t" . company-complete)
   :hook (after-init . global-company-mode)
   :config
