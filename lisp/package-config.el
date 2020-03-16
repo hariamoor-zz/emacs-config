@@ -6,29 +6,16 @@
   (async-bytecomp-package-mode 1)
   (setq message-send-mail-function 'async-smtpmail-send-it))
 
-(use-package blackout
-  :straight (:host github :repo "raxod502/blackout"))
-
-(use-package dired+
-  :straight (:host github :repo "emacsmirror/dired-plus"))
-
 (use-package atom-one-dark-theme
   :config
   (load-theme 'atom-one-dark))
 
-(use-package smart-mode-line-atom-one-dark-theme)
-
-(use-package smart-mode-line
+(use-package bash-completion
   :config
-  (setq sml/theme 'atom-one-dark)
-  :hook
-  (after-init . sml/setup))
+  (bash-completion-setup))
 
-(use-package smartparens
-  :blackout smartparens-minor-mode
-  :config
-  (require 'smartparens-config)
-  (smartparens-global-mode 1))
+(use-package blackout
+  :straight (:host github :repo "raxod502/blackout"))
 
 (use-package boon
   :config
@@ -38,29 +25,6 @@
   ("M-SPC" . boon-set-command-state)
   :hook (after-init . boon-mode))
 
-(use-package yasnippet
-  :blackout yas-minor-mode
-  :hook
-  (after-init . yas-global-mode))
-
-(use-package yasnippet-snippets)
-
-(use-package dashboard
-  :config
-  (dashboard-setup-startup-hook)
-  (setq initial-buffer-choice
-	(lambda () (get-buffer "*dashboard*"))))
-
-(use-package magit
-  :bind
-  (("C-x g" . magit-status)
-   ("C-x M-g" . magit-dispatch)))
-
-(use-package tex-site
-  :straight auctex
-  :hook
-  (TeX-after-compilation-finished . TeX-revert-document-buffer))
-  
 (use-package company
   :blackout company-mode
   :bind ("\t" . company-complete)
@@ -68,28 +32,30 @@
   :config
   (setq company-idle-delay 0))
 
-(use-package selectrum
-  :blackout
-  :straight (:host github :repo "raxod502/selectrum")
-  :config
-  (selectrum-mode 1))
-
-(use-package prescient
-  :blackout
-  :requires selectrum
-  :straight (selectrum-prescient
-	     :host github
-             :repo "raxod502/prescient.el"
-             :files ("selectrum-prescient.el")))
-
 (use-package company-auctex
   :requires company
   :config
   (company-auctex-init))
 
-(use-package smart-tabs-mode
+(use-package company-shell
+  :requires company
   :config
-  (setq indent-tabs-mode t))
+  (add-to-list 'company-backends 'company-shell))
+
+(use-package ctrlf
+  :blackout
+  :straight (ctrlf :host github :repo "raxod502/ctrlf")
+  :config
+  (ctrlf-mode))
+
+(use-package dashboard
+  :config
+  (dashboard-setup-startup-hook)
+  (setq initial-buffer-choice
+	(lambda () (get-buffer "*dashboard*"))))
+
+(use-package dired+
+  :straight (:host github :repo "emacsmirror/dired-plus"))
 
 (use-package eshell-prompt-extras
   :after esh-opt
@@ -97,9 +63,12 @@
   (setq eshell-highlight-prompt nil
 	eshell-prompt-function 'epe-theme-dakrone))
 
-(use-package bash-completion
-  :config
-  (bash-completion-setup))
+(use-package magit
+  :bind
+  (("C-x g" . magit-status)
+   ("C-x M-g" . magit-dispatch)))
+
+(use-package org)
 
 (use-package pdf-tools
   :ensure nil
@@ -110,28 +79,48 @@
   :config
   (pdf-tools-install :no-query))
 
-(use-package company-shell
-  :requires company
-  :config
-  (add-to-list 'company-backends 'company-shell))
+(use-package prescient
+  :blackout
+  :requires selectrum
+  :straight (selectrum-prescient
+	     :host github
+             :repo "raxod502/prescient.el"
+             :files ("selectrum-prescient.el")))
 
-(use-package avy
+(use-package selectrum
+  :blackout
+  :straight (:host github :repo "raxod502/selectrum")
   :config
-  (avy-setup-default)
-  :bind
-  (("C-:". avy-goto-char)
-  ("C-'" . avy-goto-char-2)
-  ("M-g f" . avy-goto-line)
-  ("M-g w" . avy-goto-word-1)
-  ("M-g e" . avy-goto-word-0)
-  ("C-c C-j" . avy-resume)))
+  (selectrum-mode 1))
 
-(use-package ace-window
+(use-package smart-mode-line
   :config
-  (setq aw-dispatch-always t)
-  :bind
-  ("C-x o" . ace-window))
+  (setq sml/theme 'atom-one-dark)
+  :hook
+  (after-init . sml/setup))
 
-(use-package org)
+(use-package smart-mode-line-atom-one-dark-theme)
+
+(use-package smartparens
+  :blackout smartparens-minor-mode
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-mode 1))
+
+(use-package smart-tabs-mode
+  :config
+  (setq indent-tabs-mode t))
+
+(use-package tex-site
+  :straight auctex
+  :hook
+  (TeX-after-compilation-finished . TeX-revert-document-buffer))
+
+(use-package yasnippet
+  :blackout yas-minor-mode
+  :hook
+  (after-init . yas-global-mode))
+
+(use-package yasnippet-snippets)
 
 (provide 'package-config)
