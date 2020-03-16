@@ -26,7 +26,7 @@
   :hook (after-init . boon-mode))
 
 (use-package company
-  :blackout company-mode
+  :blackout
   :bind ("\t" . company-complete)
   :hook (after-init . global-company-mode)
   :config
@@ -75,21 +75,19 @@
   :hook
   (pdf-view-mode . pdf-links-minor-mode)
   :load-path "site-lisp/pdf-tools/lisp"
-  :magic ("%PDF" . pdf-view-mode)
-  :config
-  (pdf-tools-install :no-query))
+  :magic ("%PDF" . pdf-view-mode))
 
 (use-package prescient
   :blackout
   :requires selectrum
   :straight (selectrum-prescient
 	     :host github
-             :repo "raxod502/prescient.el"
+             :repo "emacsmirror/prescient"
              :files ("selectrum-prescient.el")))
 
 (use-package selectrum
   :blackout
-  :straight (:host github :repo "raxod502/selectrum")
+  :straight (:host github :repo "emacsmirror/selectrum")
   :config
   (selectrum-mode 1))
 
@@ -102,7 +100,7 @@
 (use-package smart-mode-line-atom-one-dark-theme)
 
 (use-package smartparens
-  :blackout smartparens-minor-mode
+  :blackout
   :config
   (require 'smartparens-config)
   (smartparens-global-mode 1))
