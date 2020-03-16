@@ -1,7 +1,5 @@
 (use-package async 
   :config
-  (autoload 'dired-async-mode "dired-async.el" nil t)
-  (autoload 'async-smtpmail-send-it "smtp-mail-async.el" nil t)
   (dired-async-mode 1)
   (async-bytecomp-package-mode 1)
   (setq message-send-mail-function 'async-smtpmail-send-it))
