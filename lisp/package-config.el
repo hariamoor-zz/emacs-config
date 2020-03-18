@@ -42,7 +42,8 @@
 (use-package company-shell
   :requires company
   :config
-  (add-to-list 'company-backends 'company-shell))
+  (add-to-list 'company-backends
+	       '(company-shell company-shell-env)))
 
 (use-package ctrlf
   :blackout
