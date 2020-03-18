@@ -5,8 +5,7 @@
       `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t))
-      custom-safe-themes t
-      enable-recursive-minibuffers t)
+      custom-safe-themes t)
 
 (add-to-list 'load-path (concat user-emacs-directory
 				(convert-standard-filename "lisp/")))
