@@ -70,7 +70,9 @@
   (("C-x g" . magit-status)
    ("C-x M-g" . magit-dispatch)))
 
-(use-package org)
+(use-package org
+  :config
+  (require 'ox-md))
 
 (use-package prescient
   :blackout
