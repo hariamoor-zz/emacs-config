@@ -66,6 +66,9 @@
   (setq eshell-highlight-prompt nil
 	eshell-prompt-function 'epe-theme-dakrone))
 
+(use-package forge
+  :after magit)
+
 (use-package magit
   :bind
   (("C-x g" . magit-status)
@@ -76,8 +79,10 @@
   (require 'ox-md))
 
 (use-package prescient
+  :after selectrum
   :blackout
-  :requires selectrum
+  :config
+  (selectrum-prescient-mode 1)
   :straight (selectrum-prescient
 	     :host github
              :repo "emacsmirror/prescient"
@@ -85,12 +90,12 @@
 
 (use-package selectrum
   :blackout
-  :straight (:host github :repo "emacsmirror/selectrum")
   :config
-  (selectrum-mode 1))
+  (selectrum-mode 1)
+  :straight (:host github :repo "emacsmirror/selectrum"))
 
 (use-package smart-mode-line
-  :requires smart-mode-line-atom-one-dark-theme
+  :after smart-mode-line-atom-one-dark-theme
   :config
   (setq sml/theme 'atom-one-dark)
   :hook
