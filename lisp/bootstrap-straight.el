@@ -1,3 +1,5 @@
+;; bootstrap straight.el and set defaults
+
 (setq straight-repository-branch "develop"
       straight-use-package-by-default t)
 

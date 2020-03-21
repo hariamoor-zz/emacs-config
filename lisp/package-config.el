@@ -1,3 +1,5 @@
+;; install and configure packages
+
 (use-package async 
   :config
   (dired-async-mode 1)
