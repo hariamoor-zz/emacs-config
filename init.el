@@ -10,5 +10,9 @@
 (add-to-list 'load-path (concat user-emacs-directory
 				(convert-standard-filename "lisp/")))
 
+(with-eval-after-load 'tramp
+  (setq tramp-shell-prompt-pattern
+	"\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*"))
+
 (require 'bootstrap-straight)
 (require 'package-config)
