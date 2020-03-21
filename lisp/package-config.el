@@ -67,7 +67,8 @@
 	eshell-prompt-function 'epe-theme-dakrone))
 
 (use-package forge
-  :after magit)
+  :bind
+  ("C-x f" . forge-dispatch))
 
 (use-package magit
   :bind
