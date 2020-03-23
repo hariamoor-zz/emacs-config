@@ -29,6 +29,9 @@
   ("M-SPC" . boon-set-command-state)
   :hook (after-init . boon-mode))
 
+(use-package cdlatex
+  :after auctex)
+
 (use-package company
   :blackout
   :bind ("\t" . company-complete)
@@ -79,7 +82,9 @@
 
 (use-package org
   :config
-  (require 'ox-md))
+  (require 'ox-md)
+  :hook
+  (LaTeX-mode . org-cdlatex-mode))
 
 (use-package prescient
   :after selectrum
