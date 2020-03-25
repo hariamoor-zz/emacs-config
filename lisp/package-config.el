@@ -49,9 +49,9 @@
 
 (use-package ctrlf
   :blackout
-  :straight (ctrlf :host github :repo "raxod502/ctrlf")
   :config
-  (ctrlf-mode))
+  (ctrlf-mode)
+  :straight (:host github :repo "raxod502/ctrlf"))
 
 (use-package dashboard
   :config
