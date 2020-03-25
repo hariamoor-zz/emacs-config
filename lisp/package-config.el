@@ -91,6 +91,11 @@
              :repo "emacsmirror/prescient"
              :files ("selectrum-prescient.el")))
 
+(use-package rg
+  :if (executable-find "rg")
+  :config
+  (rg-enable-menu))
+
 (use-package selectrum
   :blackout
   :config
