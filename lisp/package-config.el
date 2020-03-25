@@ -22,36 +22,36 @@
   :straight (:host github :repo "raxod502/blackout"))
 
 (use-package boon
+  :bind
+  ("M-SPC" . boon-set-command-state)
   :config
   (require 'boon-qwerty)
   (require 'boon-tutorial)
-  :bind
-  ("M-SPC" . boon-set-command-state)
   :hook (after-init . boon-mode))
 
 (use-package company
-  :blackout
   :bind ("\t" . company-complete)
+  :blackout
   :hook (after-init . global-company-mode)
   :config
   (setq company-idle-delay 0))
 
 (use-package company-auctex
-  :requires company
   :config
-  (company-auctex-init))
+  (company-auctex-init)
+  :requires company)
 
 (use-package company-shell
-  :requires company
   :config
   (add-to-list 'company-backends
-	       '(company-shell company-shell-env)))
+	       '(company-shell company-shell-env))
+  :requires company)
 
 (use-package ctrlf
   :blackout
-  :straight (ctrlf :host github :repo "raxod502/ctrlf")
   :config
-  (ctrlf-mode))
+  (ctrlf-mode)
+  :straight (:host github :repo "raxod502/ctrlf"))
 
 (use-package dashboard
   :config
@@ -92,9 +92,9 @@
              :files ("selectrum-prescient.el")))
 
 (use-package rg
-  :if (executable-find "rg")
   :config
-  (rg-enable-menu))
+  (rg-enable-menu)
+  :if (executable-find "rg"))
 
 (use-package selectrum
   :blackout
