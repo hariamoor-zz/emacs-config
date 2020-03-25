@@ -1,6 +1,6 @@
 ;; install and configure packages
 
-(use-package async 
+(use-package async
   :config
   (dired-async-mode 1)
   (async-bytecomp-package-mode 1)

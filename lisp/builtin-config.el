@@ -15,4 +15,6 @@
   (setq tramp-shell-prompt-pattern
 	"\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*"))
 
+(global-auto-revert-mode)
+
 (provide 'builtin-config)
