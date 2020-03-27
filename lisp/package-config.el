@@ -32,9 +32,10 @@
 (use-package company
   :bind ("\t" . company-complete)
   :blackout
-  :hook (after-init . global-company-mode)
   :config
-  (setq company-idle-delay 0))
+  (setq company-idle-delay 0)
+  :hook
+  (prog-mode . company-mode))
 
 (use-package company-auctex
   :config

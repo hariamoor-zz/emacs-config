@@ -9,11 +9,13 @@
       `((".*" ,temporary-file-directory t))
       custom-safe-themes t)
 
-;; needed to make tramp work, see:
-;; emacs.stackexchange.com/questions/12487/when-should-i-use-with-eval-after-load-in-my-configuration-files
+;; changes applied from:
+;; https://www.emacswiki.org/emacs/TrampMode
 (with-eval-after-load 'tramp
+  (setenv "SHELL" "/bin/bash")
   (setq tramp-shell-prompt-pattern
-	"\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*"))
+	"\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*"
+        tramp-default-method "ssh"))
 
 (global-auto-revert-mode)
 
