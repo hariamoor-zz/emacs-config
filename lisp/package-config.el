@@ -84,14 +84,14 @@
   (require 'ox-md))
 
 (use-package prescient
-  :after selectrum
   :blackout
   :config
   (selectrum-prescient-mode 1)
   :straight (selectrum-prescient
 	     :host github
              :repo "emacsmirror/prescient"
-             :files ("selectrum-prescient.el")))
+             :files ("selectrum-prescient.el"))
+  :requires selectrum)
 
 (use-package rg
   :config
