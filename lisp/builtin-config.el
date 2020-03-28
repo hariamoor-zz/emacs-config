@@ -21,8 +21,7 @@
         vc-handled-backends '(Git)
         tramp-verbose 3))
 
-(with-eval-after-load 'eshell
-  (global-set-key (kbd "C-x l") 'eshell))
+(global-set-key (kbd "C-x l") 'eshell)
 
 (global-auto-revert-mode)
 
