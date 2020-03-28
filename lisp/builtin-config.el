@@ -11,11 +11,15 @@
       `((".*" ,temporary-file-directory t))
       custom-safe-themes t)
 
-;; changes applied from:
-;; https://www.emacswiki.org/emacs/TrampMode
+;; set shell to bash so that shell prompt doesn't matter
+;; performance improvements mentioned in:
+;; gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
 (with-eval-after-load 'tramp
   (setq tramp-default-method "ssh"
-	tramp-default-remote-shell "/bin/bash"))
+	tramp-default-remote-shell "/bin/bash"
+        tramp-completion-reread-directory-timeout nil
+        vc-handled-backends '(Git)
+        tramp-verbose 3))
 
 (with-eval-after-load 'eshell
   (global-set-key (kbd "C-x l") 'eshell))
