@@ -14,10 +14,6 @@
   :hook
   (TeX-after-compilation-finished . TeX-revert-document-buffer))
 
-(use-package bash-completion
-  :config
-  (bash-completion-setup))
-
 (use-package blackout
   :straight (:host github :repo "raxod502/blackout"))
 
@@ -62,6 +58,9 @@
 
 (use-package dired+
   :straight (:host github :repo "emacsmirror/dired-plus"))
+
+(use-package esh-autosuggest
+  :hook (eshell-mode . esh-autosuggest-mode))
 
 (use-package eshell-prompt-extras
   :after esh-opt
