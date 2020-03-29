@@ -2,14 +2,23 @@
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(tool-bar-mode -1)
+(blink-cursor-mode -1)
 
 (setenv "SHELL" "/bin/bash")
 
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory))
-      auto-save-file-name-transforms
+(setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t))
-      custom-safe-themes t)
+      backup-directory-alist
+      `((".*" . ,temporary-file-directory))
+      custom-safe-themes t
+      display-line-numbers-type
+      'relative
+      echo-keystrokes 0.1
+      ring-bell-function 'ignore)
+
+(add-to-list 'default-frame-alist
+	     '(font . "IBM Plex Mono 12"))
 
 ;; set shell to bash so that shell prompt doesn't matter
 ;; performance improvements mentioned in:
@@ -24,5 +33,7 @@
 (global-set-key (kbd "C-x l") 'eshell)
 
 (global-auto-revert-mode)
+(global-display-line-numbers-mode)
+(show-paren-mode)
 
 (provide 'builtin-config)
