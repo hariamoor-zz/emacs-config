@@ -1,11 +1,5 @@
 ;; install and configure packages
 
-(use-package async
-  :config
-  (dired-async-mode 1)
-  (async-bytecomp-package-mode 1)
-  (setq message-send-mail-function 'async-smtpmail-send-it))
-
 (use-package atom-one-dark-theme
   :config
   (load-theme 'atom-one-dark))
@@ -80,7 +74,8 @@
 
 (use-package org
   :config
-  (require 'ox-md))
+  (require 'ox-md)
+  (setq org-export-in-background t))
 
 (use-package prescient
   :blackout
