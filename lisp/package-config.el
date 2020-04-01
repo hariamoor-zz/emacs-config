@@ -25,7 +25,7 @@
   :config
   (setq company-idle-delay 0)
   :hook
-  ((prog-mode tex-mode) . company-mode))
+  ((prog-mode tex-mode org-mode) . company-mode))
 
 (use-package company-auctex
   :config
