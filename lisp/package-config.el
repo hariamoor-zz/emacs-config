@@ -20,12 +20,12 @@
   :hook (after-init . boon-mode))
 
 (use-package company
-  :bind ("\t" . company-complete)
+  :bind
+  ("\t" . company-complete)
   :blackout
   :config
   (setq company-idle-delay 0)
-  :hook
-  ((prog-mode tex-mode org-mode) . company-mode))
+  (global-company-mode 1))
 
 (use-package company-auctex
   :config
