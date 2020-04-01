@@ -95,6 +95,8 @@
   :requires selectrum)
 
 (use-package rg
+  :bind
+  ("C-c s" . rg-menu)
   :config
   (rg-enable-menu)
   :if (executable-find "rg"))
