@@ -67,6 +67,12 @@
   :bind
   ("C-x f" . forge-dispatch))
 
+(use-package guess-style
+  :config
+  (global-guess-style-info-mode 1)
+  :hook
+  (prog-mode . guess-style-guess-all))
+
 (use-package magit
   :bind
   (("C-x g" . magit-status)
