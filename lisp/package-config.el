@@ -80,17 +80,17 @@
   (require 'ox-md)
   (setq org-export-in-background t))
 
+(use-package rg
+  :config
+  (rg-enable-default-bindings)
+  :if (executable-find "rg"))
+
 (use-package selectrum-prescient
   :blackout
   :config
   (selectrum-prescient-mode 1)
   (prescient-persist-mode 1)
   :requires selectrum)
-
-(use-package rg
-  :config
-  (rg-enable-default-bindings)
-  :if (executable-find "rg"))
 
 (use-package selectrum
   :blackout
