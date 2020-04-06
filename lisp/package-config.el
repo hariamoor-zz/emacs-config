@@ -104,8 +104,7 @@
 (use-package selectrum
   :blackout
   :config
-  (selectrum-mode 1)
-  :straight (:host github :repo "emacsmirror/selectrum"))
+  (selectrum-mode 1))
 
 (use-package smart-mode-line
   :after smart-mode-line-atom-one-dark-theme
