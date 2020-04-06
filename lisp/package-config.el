@@ -1,5 +1,10 @@
 ;; install and configure packages
 
+(use-package async
+  :config
+  (dired-async-mode 1)
+  (async-bytecomp-package-mode 1))
+
 (use-package atom-one-dark-theme
   :config
   (load-theme 'atom-one-dark))
