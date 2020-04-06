@@ -2,6 +2,7 @@
 
 (use-package async
   :config
+  (setq async-bytecomp-allowed-packages '(all))
   (dired-async-mode 1)
   (async-bytecomp-package-mode 1))
 
