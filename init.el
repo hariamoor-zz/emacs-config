@@ -1,7 +1,7 @@
 ;; initailize all other files in order
 
-(add-to-list 'load-path (concat user-emacs-directory
-				(convert-standard-filename "lisp/")))
+(add-to-list 'load-path
+	     (expand-file-name "lisp/" user-emacs-directory))
 
 (require 'builtin-config)
 
