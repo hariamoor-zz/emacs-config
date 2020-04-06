@@ -36,12 +36,6 @@
   (company-auctex-init)
   :requires company)
 
-(use-package company-shell
-  :config
-  (add-to-list 'company-backends
-	       '(company-shell company-shell-env))
-  :requires company)
-
 (use-package ctrlf
   :blackout
   :config
