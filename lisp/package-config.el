@@ -13,8 +13,7 @@
   :hook
   (TeX-after-compilation-finished . TeX-revert-document-buffer))
 
-(use-package blackout
-  :straight (:host github :repo "raxod502/blackout"))
+(use-package blackout)
 
 (use-package boon
   :bind
@@ -46,8 +45,7 @@
 (use-package ctrlf
   :blackout
   :config
-  (ctrlf-mode)
-  :straight (:host github :repo "raxod502/ctrlf"))
+  (ctrlf-mode))
 
 (use-package dashboard
   :config
@@ -55,8 +53,7 @@
   (setq initial-buffer-choice
 	(lambda () (get-buffer "*dashboard*"))))
 
-(use-package dired+
-  :straight (:host github :repo "emacsmirror/dired-plus"))
+(use-package dired+)
 
 (use-package esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode))
@@ -88,22 +85,16 @@
   (require 'ox-md)
   (setq org-export-in-background t))
 
-(use-package prescient
+(use-package selectrum-prescient
   :blackout
   :config
   (selectrum-prescient-mode 1)
   (prescient-persist-mode 1)
-  :straight (selectrum-prescient
-	     :host github
-             :repo "emacsmirror/prescient"
-             :files ("selectrum-prescient.el"))
   :requires selectrum)
 
 (use-package rg
-  :bind
-  ("C-c s" . rg-menu)
   :config
-  (rg-enable-menu)
+  (rg-enable-default-bindings)
   :if (executable-find "rg"))
 
 (use-package selectrum
