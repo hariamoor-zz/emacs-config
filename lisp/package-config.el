@@ -24,6 +24,11 @@
   (require 'boon-tutorial)
   :hook (after-init . boon-mode))
 
+(use-package cargo
+  :after rust-mode
+  :hook
+  (rust-mode . cargo-minor-mode))
+
 (use-package company
   :bind
   ("\t" . company-complete)
@@ -31,6 +36,10 @@
   :config
   (setq company-idle-delay 0)
   (global-company-mode 1))
+
+(use-package company-lsp
+  :config
+  (push 'company-lsp company-backends))
 
 (use-package company-auctex
   :config
@@ -70,6 +79,12 @@
   :hook
   (prog-mode . guess-style-guess-all))
 
+(use-package lsp-mode
+  :config
+  (require 'lsp-clients))
+
+(use-package lsp-ui)
+
 (use-package magit
   :bind
   (("C-x g" . magit-status)
@@ -84,6 +99,11 @@
   :config
   (rg-enable-default-bindings)
   :if (executable-find "rg"))
+
+(use-package rust-mode
+  :after lsp-mode
+  :hook
+  (rust-mode . lsp))
 
 (use-package selectrum-prescient
   :blackout

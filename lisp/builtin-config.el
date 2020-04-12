@@ -16,6 +16,12 @@
       echo-keystrokes 0.1
       ring-bell-function 'ignore)
 
+;; add path to cargo
+(when (executable-find "cargo")
+  (setq exec-path
+        (append exec-path
+                '(substitute-in-file-name "$HOME/.cargo/bin/"))))
+
 ;; set shell to bash so that shell prompt doesn't matter
 ;; performance improvements mentioned in:
 ;; gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
@@ -26,6 +32,7 @@
         vc-handled-backends '(Git)
         tramp-verbose 3))
 
+(global-set-key (kbd "C-x t") 'term)
 (global-set-key (kbd "C-x l") 'eshell)
 
 (global-auto-revert-mode)
