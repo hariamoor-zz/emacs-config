@@ -20,7 +20,7 @@
 (when (executable-find "cargo")
   (setq exec-path
         (append exec-path
-                '(substitute-in-file-name "$HOME/.cargo/bin/"))))
+                '(substitute-in-file-name "$HOME/.cargo/bin"))))
 
 ;; set shell to bash so that shell prompt doesn't matter
 ;; performance improvements mentioned in:
