@@ -92,8 +92,24 @@
 
 (use-package org
   :config
-  (require 'ox-md)
-  (setq org-export-in-background t))
+  (require 'ox-md))
+
+(use-package pdf-tools
+  :config
+  (pdf-tools-install)
+  (setq-default pdf-view-display-size 'fit-page)
+  (bind-keys :map pdf-view-mode-map
+             ("<"  . pdf-view-first-page)
+             (">"  . pdf-view-last-page)
+             ("k"  . image-forward-hscroll)
+             ("j"  . image-backward-hscroll)
+             ("o"  . pdf-view-next-page)
+             ("i"  . pdf-view-previous-page)
+             ("g"  . pdf-view-revert-buffer)
+             ("d"  . pdf-view-kill-ring-save)
+             ("s"  . pdf-occur)
+             ("b"  . pdf-view-set-slice-from-bounding-box)
+             ("r"  . pdf-view-reset-slice)))
 
 (use-package rg
   :config
@@ -102,6 +118,9 @@
 
 (use-package rust-mode
   :after lsp-mode
+  :config
+  (setq rust-always-locate-project-on-open t
+        rust-format-on-save t)
   :hook
   (rust-mode . lsp))
 

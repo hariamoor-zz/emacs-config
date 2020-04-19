@@ -37,6 +37,7 @@
 
 (global-auto-revert-mode)
 (global-display-line-numbers-mode)
+(global-visual-line-mode)
 (show-paren-mode)
 
 (provide 'builtin-config)
