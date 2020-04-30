@@ -26,6 +26,7 @@
 
 (use-package cargo
   :after rust-mode
+  :blackout
   :hook
   (rust-mode . cargo-minor-mode))
 
@@ -68,11 +69,6 @@
   (setq eshell-highlight-prompt nil
 	eshell-prompt-function 'epe-theme-dakrone))
 
-(use-package forge
-  :after magit
-  :bind
-  ("C-x f" . forge-dispatch))
-
 (use-package guess-style
   :config
   (global-guess-style-info-mode 1)
@@ -81,6 +77,7 @@
 
 (use-package lsp-mode
   :config
+  (setq lsp-rust-server 'rust-analyzer)
   (require 'lsp-clients))
 
 (use-package lsp-ui)
@@ -103,8 +100,6 @@
              (">"  . pdf-view-last-page)
              ("k"  . image-forward-hscroll)
              ("j"  . image-backward-hscroll)
-             ("o"  . pdf-view-next-page)
-             ("i"  . pdf-view-previous-page)
              ("g"  . pdf-view-revert-buffer)
              ("d"  . pdf-view-kill-ring-save)
              ("s"  . pdf-occur)
