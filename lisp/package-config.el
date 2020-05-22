@@ -76,6 +76,7 @@
   (prog-mode . guess-style-guess-all))
 
 (use-package lsp-mode
+  :blackout
   :config
   (setq lsp-rust-server 'rust-analyzer)
   (require 'lsp-clients))
