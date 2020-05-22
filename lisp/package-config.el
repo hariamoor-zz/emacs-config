@@ -6,10 +6,6 @@
   (dired-async-mode 1)
   (async-bytecomp-package-mode 1))
 
-(use-package atom-one-dark-theme
-  :config
-  (load-theme 'atom-one-dark))
-
 (use-package auctex
   :hook
   (TeX-after-compilation-finished . TeX-revert-document-buffer))
@@ -75,11 +71,18 @@
   :hook
   (prog-mode . guess-style-guess-all))
 
+(use-package gruvbox-theme
+  :config
+  (load-theme 'gruvbox-dark-hard))
+
 (use-package lsp-mode
+  :after which-key
   :blackout
   :config
   (setq lsp-rust-server 'rust-analyzer)
-  (require 'lsp-clients))
+  (require 'lsp-clients)
+  :hook
+  (lsp-mode . lsp-enable-which-key-integration))
 
 (use-package lsp-ui)
 
@@ -150,6 +153,8 @@
 (use-package smart-tabs-mode
   :config
   (setq indent-tabs-mode t))
+
+(use-package which-key)
 
 (use-package yasnippet
   :blackout yas-minor-mode
