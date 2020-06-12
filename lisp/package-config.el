@@ -25,13 +25,13 @@
 (use-package cargo
   :after rust-mode
   :blackout
+  :hook
+  (rust-mode . cargo-minor-mode)
   :init
   (setq exec-path
       (append exec-path
-              '(substitute-in-file-name "$HOME/.cargo/bin")))
-  :hook
-  (rust-mode . cargo-minor-mode))
-
+              '(substitute-in-file-name "$HOME/.cargo/bin"))))
+  
 (use-package company
   :bind
   ("\t" . company-complete)
