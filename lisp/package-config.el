@@ -18,6 +18,8 @@
   :config
   (require 'boon-qwerty)
   (require 'boon-tutorial)
+  (when (eq system-type 'darwin)
+    (global-set-key (kbd "M-m") 'boon-set-command-state))
   :hook (after-init . boon-mode))
 
 (use-package cargo
@@ -94,21 +96,6 @@
 (use-package org
   :config
   (require 'ox-md))
-
-(use-package pdf-tools
-  :config
-  (pdf-tools-install)
-  (setq-default pdf-view-display-size 'fit-page)
-  (bind-keys :map pdf-view-mode-map
-             ("<"  . pdf-view-first-page)
-             (">"  . pdf-view-last-page)
-             ("k"  . image-forward-hscroll)
-             ("j"  . image-backward-hscroll)
-             ("g"  . pdf-view-revert-buffer)
-             ("d"  . pdf-view-kill-ring-save)
-             ("s"  . pdf-occur)
-             ("b"  . pdf-view-set-slice-from-bounding-box)
-             ("r"  . pdf-view-reset-slice)))
 
 (use-package rg
   :config
