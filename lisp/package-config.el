@@ -71,6 +71,12 @@
   (setq eshell-highlight-prompt nil
 	eshell-prompt-function 'epe-theme-dakrone))
 
+(use-package go-mode
+  :config
+  (setq gofmt-before-save t)
+  :init
+  (setenv "GOROOT" "/usr/local/go"))
+
 (use-package guess-style
   :config
   (global-guess-style-info-mode 1)
