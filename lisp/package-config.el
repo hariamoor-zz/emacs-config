@@ -38,7 +38,12 @@
   :blackout
   :config
   (setq company-idle-delay 0)
-  (global-company-mode 1))
+  (global-company-mode 1)
+  :hook
+  (shell-mode . (lambda () my-shell-mode-setup-function
+		  (when (and (fboundp 'company-mode)
+			     (file-remote-p default-directory))
+		    (company-mode -1)))))
 
 (use-package company-lsp
   :config
@@ -61,6 +66,12 @@
 	(lambda () (get-buffer "*dashboard*"))))
 
 (use-package dired+)
+
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-copy-envs
+   '("GOFLAGS" "GOROOT"))
+  (exec-path-from-shell-initialize))
 
 (use-package esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode))
@@ -91,10 +102,16 @@
   :after which-key
   :blackout
   :config
+  (define-key lsp-mode-map (kbd "C-c C-l") lsp-command-map)
   (setq lsp-rust-server 'rust-analyzer)
   (require 'lsp-clients)
   :hook
-  (lsp-mode . lsp-enable-which-key-integration))
+  (lsp-mode . (lambda ()
+		(let ((lsp-keymap-prefix "C-c C-l"))
+		  (lsp-enable-which-key-integration))))
+  (go-mode . lsp)
+  (rust-mode . lsp)
+  (python-mode . lsp))
 
 (use-package lsp-ui)
 
@@ -107,10 +124,16 @@
   :config
   (require 'ox-md))
 
+(use-package perspective
+  ;; :bind
+  ;; (("C-x b" . persp-switch-to-buffer*)
+  ;; ("C-x k" . persp-kill-buffer*))
+  :config
+  (persp-mode))
+
 (use-package rg
   :config
-  (rg-enable-default-bindings)
-  :if (executable-find "rg"))
+  (rg-enable-menu))
 
 (use-package rust-mode
   :after lsp-mode
