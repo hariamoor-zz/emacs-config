@@ -45,14 +45,14 @@
 			     (file-remote-p default-directory))
 		    (company-mode -1)))))
 
-(use-package company-lsp
-  :config
-  (push 'company-lsp company-backends))
-
 (use-package company-auctex
   :config
   (company-auctex-init)
   :requires company)
+
+(use-package company-lsp
+  :config
+  (push 'company-lsp company-backends))
 
 (use-package ctrlf
   :blackout
@@ -125,9 +125,9 @@
   (require 'ox-md))
 
 (use-package perspective
-  ;; :bind
-  ;; (("C-x b" . persp-switch-to-buffer*)
-  ;; ("C-x k" . persp-kill-buffer*))
+  :bind
+  (("C-x b" . persp-switch-to-buffer*)
+  ("C-x k" . persp-kill-buffer*))
   :config
   (persp-mode))
 
