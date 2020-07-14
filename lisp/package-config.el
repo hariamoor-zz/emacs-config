@@ -79,7 +79,7 @@
   :after which-key
   :blackout
   :config
-  (setq lsp-rust-server 'rust-analyzer)
+   lsp-rust-server 'rust-analyzer)
   (require 'lsp-clients)
   :hook
   (lsp-mode . lsp-enable-which-key-integration))
@@ -95,6 +95,10 @@
   :config
   (require 'ox-md))
 
+(use-package pandoc-mode
+  :hook
+  (pandoc-mode . pandoc-load-default-settings))
+
 (use-package pdf-tools
   :config
   (pdf-tools-install)
@@ -109,6 +113,12 @@
              ("s"  . pdf-occur)
              ("b"  . pdf-view-set-slice-from-bounding-box)
              ("r"  . pdf-view-reset-slice)))
+
+(use-package python-mode)
+
+(use-package py-autopep8
+  :hook
+  (python-mode . py-autopep8-enable-on-save))
 
 (use-package rg
   :config
