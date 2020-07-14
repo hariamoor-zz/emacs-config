@@ -1,5 +1,7 @@
 ;; install and configure packages
 
+(use-package adaptive-wrap)
+
 (use-package async
   :config
   (setq async-bytecomp-allowed-packages '(all))
@@ -18,8 +20,6 @@
   :config
   (require 'boon-qwerty)
   (require 'boon-tutorial)
-  (when (eq system-type 'darwin)
-    (global-set-key (kbd "M-m") 'boon-set-command-state))
   :hook (after-init . boon-mode))
 
 (use-package cargo
@@ -64,6 +64,12 @@
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice
 	(lambda () (get-buffer "*dashboard*"))))
+
+(use-package dap-mode
+  :config
+  (dap-auto-configure-mode)
+  (require 'dap-go)
+  (dap-go-setup))
 
 (use-package dired+)
 
@@ -124,6 +130,12 @@
   :config
   (require 'ox-md))
 
+(use-package pdf-tools
+  :config
+  (pdf-tools-install)
+  (with-system darwin
+    (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo")))
+
 (use-package perspective
   :bind
   (("C-x b" . persp-switch-to-buffer*)
@@ -173,6 +185,16 @@
 (use-package smart-tabs-mode
   :config
   (setq indent-tabs-mode t))
+
+(use-package use-package-ensure-system-package)
+
+(use-package vterm
+  :init
+  (setenv "USE_SYSTEM_LIBVTERM" "no")
+  :bind
+  ("C-x t" . vterm-other-window)
+  :config
+  (define-key vterm-mode-map (kbd "M-m") 'boon-set-command-state))
 
 (use-package which-key)
 

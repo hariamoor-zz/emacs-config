@@ -27,9 +27,6 @@
       vc-handled-backends '(Git)
       tramp-verbose 10)
 
-(global-set-key (kbd "C-x t") 'shell)
-(global-set-key (kbd "C-x l") 'eshell)
-
 (global-auto-revert-mode)
 (global-display-line-numbers-mode)
 (global-visual-line-mode)
