@@ -1,5 +1,7 @@
 ;; install and configure packages
 
+(use-package adaptive-wrap)
+
 (use-package async
   :config
   (setq async-bytecomp-allowed-packages '(all))
@@ -24,24 +26,33 @@
   :after rust-mode
   :blackout
   :hook
-  (rust-mode . cargo-minor-mode))
-
+  (rust-mode . cargo-minor-mode)
+  :init
+  (setq exec-path
+      (append exec-path
+              '(substitute-in-file-name "$HOME/.cargo/bin"))))
+  
 (use-package company
   :bind
   ("\t" . company-complete)
   :blackout
   :config
   (setq company-idle-delay 0)
-  (global-company-mode 1))
-
-(use-package company-lsp
-  :config
-  (push 'company-lsp company-backends))
+  (global-company-mode 1)
+  :hook
+  (shell-mode . (lambda () my-shell-mode-setup-function
+		  (when (and (fboundp 'company-mode)
+			     (file-remote-p default-directory))
+		    (company-mode -1)))))
 
 (use-package company-auctex
   :config
   (company-auctex-init)
   :requires company)
+
+(use-package company-lsp
+  :config
+  (push 'company-lsp company-backends))
 
 (use-package ctrlf
   :blackout
@@ -54,7 +65,19 @@
   (setq initial-buffer-choice
 	(lambda () (get-buffer "*dashboard*"))))
 
+(use-package dap-mode
+  :config
+  (dap-auto-configure-mode)
+  (require 'dap-go)
+  (dap-go-setup))
+
 (use-package dired+)
+
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-copy-envs
+   '("GOFLAGS" "GOROOT"))
+  (exec-path-from-shell-initialize))
 
 (use-package esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode))
@@ -64,6 +87,12 @@
   :config
   (setq eshell-highlight-prompt nil
 	eshell-prompt-function 'epe-theme-dakrone))
+
+(use-package go-mode
+  :config
+  (setq gofmt-before-save t)
+  :init
+  (setenv "GOROOT" "/usr/local/go"))
 
 (use-package guess-style
   :config
@@ -80,9 +109,16 @@
   :blackout
   :config
    lsp-rust-server 'rust-analyzer)
+  (define-key lsp-mode-map (kbd "C-c C-l") lsp-command-map)
+  (setq lsp-rust-server 'rust-analyzer)
   (require 'lsp-clients)
   :hook
-  (lsp-mode . lsp-enable-which-key-integration))
+  (lsp-mode . (lambda ()
+		(let ((lsp-keymap-prefix "C-c C-l"))
+		  (lsp-enable-which-key-integration))))
+  (go-mode . lsp)
+  (rust-mode . lsp)
+  (python-mode . lsp))
 
 (use-package lsp-ui)
 
@@ -102,17 +138,15 @@
 (use-package pdf-tools
   :config
   (pdf-tools-install)
-  (setq-default pdf-view-display-size 'fit-page)
-  (bind-keys :map pdf-view-mode-map
-             ("<"  . pdf-view-first-page)
-             (">"  . pdf-view-last-page)
-             ("k"  . image-forward-hscroll)
-             ("j"  . image-backward-hscroll)
-             ("g"  . pdf-view-revert-buffer)
-             ("d"  . pdf-view-kill-ring-save)
-             ("s"  . pdf-occur)
-             ("b"  . pdf-view-set-slice-from-bounding-box)
-             ("r"  . pdf-view-reset-slice)))
+  (with-system darwin
+    (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo")))
+
+(use-package perspective
+  :bind
+  (("C-x b" . persp-switch-to-buffer*)
+  ("C-x k" . persp-kill-buffer*))
+  :config
+  (persp-mode))
 
 (use-package python-mode)
 
@@ -122,8 +156,7 @@
 
 (use-package rg
   :config
-  (rg-enable-default-bindings)
-  :if (executable-find "rg"))
+  (rg-enable-menu))
 
 (use-package rust-mode
   :after lsp-mode
@@ -163,6 +196,16 @@
 (use-package smart-tabs-mode
   :config
   (setq indent-tabs-mode t))
+
+(use-package use-package-ensure-system-package)
+
+(use-package vterm
+  :init
+  (setenv "USE_SYSTEM_LIBVTERM" "no")
+  :bind
+  ("C-x t" . vterm-other-window)
+  :config
+  (define-key vterm-mode-map (kbd "M-m") 'boon-set-command-state))
 
 (use-package which-key)
 

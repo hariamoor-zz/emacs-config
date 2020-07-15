@@ -14,26 +14,18 @@
       display-line-numbers-type
       'relative
       echo-keystrokes 0.1
-      ring-bell-function 'ignore)
+      ring-bell-function 'ignore
+      shell-file-name "/bin/bash"
+      explicit-shell-file-name "/bin/bash")
 
-;; add path to cargo
-(when (executable-find "cargo")
-  (setq exec-path
-        (append exec-path
-                '(substitute-in-file-name "$HOME/.cargo/bin"))))
-
-;; set shell to bash so that shell prompt doesn't matter
-;; performance improvements mentioned in:
+;; set shell to bash so that shell prompt doesn't matter performance
+;; improvements mentioned in:
 ;; gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
-(with-eval-after-load 'tramp
-  (setq tramp-default-method "ssh"
-	tramp-default-remote-shell "/bin/bash"
-        tramp-completion-reread-directory-timeout nil
-        vc-handled-backends '(Git)
-        tramp-verbose 3))
-
-(global-set-key (kbd "C-x t") 'term)
-(global-set-key (kbd "C-x l") 'eshell)
+(setq tramp-default-method "ssh"
+      tramp-default-remote-shell "/bin/bash"
+      tramp-completion-reread-directory-timeout nil
+      vc-handled-backends '(Git)
+      tramp-verbose 10)
 
 (global-auto-revert-mode)
 (global-display-line-numbers-mode)
