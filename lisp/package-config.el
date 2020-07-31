@@ -112,6 +112,7 @@
   :after which-key
   :blackout
   :config
+   lsp-rust-server 'rust-analyzer)
   (define-key lsp-mode-map (kbd "C-c C-l") lsp-command-map)
   (setq lsp-rust-server 'rust-analyzer)
   (require 'lsp-clients)
@@ -134,6 +135,10 @@
   :config
   (require 'ox-md))
 
+(use-package pandoc-mode
+  :hook
+  (pandoc-mode . pandoc-load-default-settings))
+
 (use-package pdf-tools
   :config
   (pdf-tools-install)
@@ -146,6 +151,12 @@
   ("C-x k" . persp-kill-buffer*))
   :config
   (persp-mode))
+
+(use-package python-mode)
+
+(use-package py-autopep8
+  :hook
+  (python-mode . py-autopep8-enable-on-save))
 
 (use-package rg
   :config
