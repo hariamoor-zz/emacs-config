@@ -1,6 +1,8 @@
 ;; install and configure packages
 
-(use-package adaptive-wrap)
+(use-package adaptive-wrap
+  :bind
+  ("C-x a p" . adaptive-wrap-prefix-mode))
 
 (use-package async
   :config
