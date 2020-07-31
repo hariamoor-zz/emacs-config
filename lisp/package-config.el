@@ -29,9 +29,9 @@
   (rust-mode . cargo-minor-mode)
   :init
   (setq exec-path
-      (append exec-path
-              '(substitute-in-file-name "$HOME/.cargo/bin"))))
-  
+	(append exec-path
+		'(substitute-in-file-name "$HOME/.cargo/bin"))))
+
 (use-package company
   :bind
   ("\t" . company-complete)
@@ -151,7 +151,7 @@
 (use-package perspective
   :bind
   (("C-x b" . persp-switch-to-buffer*)
-  ("C-x k" . persp-kill-buffer*))
+   ("C-x k" . persp-kill-buffer*))
   :config
   (persp-mode))
 
