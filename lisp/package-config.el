@@ -69,7 +69,13 @@
   :config
   (dap-auto-configure-mode)
   (require 'dap-go)
-  (dap-go-setup))
+  (require 'dap-gdb-lldb)
+  (dap-go-setup)
+  (dap-gdb-lldb-setup)
+  (setq dap-print-io t)
+  :hook
+  (dap-stopped . (lambda ()
+		   (call-interactively #'dap-hydra))))
 
 (use-package dired+)
 
@@ -90,9 +96,7 @@
 
 (use-package go-mode
   :config
-  (setq gofmt-before-save t)
-  :init
-  (setenv "GOROOT" "/usr/local/go"))
+  (setq gofmt-before-save t))
 
 (use-package guess-style
   :config
@@ -192,9 +196,10 @@
   :init
   (setenv "USE_SYSTEM_LIBVTERM" "no")
   :bind
-  ("C-x t" . vterm-other-window)
+  ("C-x p" . vterm-other-window)
   :config
   (define-key vterm-mode-map (kbd "M-m") 'boon-set-command-state))
+
 
 (use-package which-key)
 

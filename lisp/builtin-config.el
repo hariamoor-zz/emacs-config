@@ -32,4 +32,7 @@
 (global-visual-line-mode)
 (show-paren-mode)
 
+(global-set-key (kbd "C-x t") 'shell)
+(global-set-key (kbd "C-x l") 'eshell)
+
 (provide 'builtin-config)
