@@ -98,6 +98,10 @@
   :config
   (setq gofmt-before-save t))
 
+(use-package gotest
+  :config
+  (define-key go-mode-map (kbd "C-x f") 'go-test-current-file))
+
 (use-package guess-style
   :config
   (global-guess-style-info-mode 1)
@@ -112,9 +116,8 @@
   :after which-key
   :blackout
   :config
-   lsp-rust-server 'rust-analyzer)
-  (define-key lsp-mode-map (kbd "C-c C-l") lsp-command-map)
   (setq lsp-rust-server 'rust-analyzer)
+  (define-key lsp-mode-map (kbd "C-c C-l") lsp-command-map)
   (require 'lsp-clients)
   :hook
   (lsp-mode . (lambda ()
@@ -151,12 +154,6 @@
   ("C-x k" . persp-kill-buffer*))
   :config
   (persp-mode))
-
-(use-package python-mode)
-
-(use-package py-autopep8
-  :hook
-  (python-mode . py-autopep8-enable-on-save))
 
 (use-package rg
   :config
