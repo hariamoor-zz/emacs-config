@@ -84,7 +84,7 @@
 (use-package exec-path-from-shell
   :config
   (exec-path-from-shell-copy-envs
-   '("GOFLAGS" "GOROOT"))
+   '("GOFLAGS" "GOROOT" "GOPATH"))
   (exec-path-from-shell-initialize))
 
 (use-package esh-autosuggest
@@ -200,16 +200,11 @@
   :config
   (setq indent-tabs-mode t))
 
-(use-package use-package-ensure-system-package)
-
 (use-package vterm
   :init
   (setenv "USE_SYSTEM_LIBVTERM" "no")
   :bind
-  ("C-x p" . vterm-other-window)
-  :config
-  (define-key vterm-mode-map (kbd "M-m") 'boon-set-command-state))
-
+  ("C-x p" . vterm-other-window))
 
 (use-package which-key)
 
