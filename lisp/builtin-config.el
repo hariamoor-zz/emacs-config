@@ -4,7 +4,7 @@
 (tool-bar-mode -1)
 (blink-cursor-mode -1)
 
-(setenv "SHELL" "/bin/bash")
+(setenv "SHELL" "/usr/bin/fish")
 
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t))
@@ -15,8 +15,8 @@
       'relative
       echo-keystrokes 0.1
       ring-bell-function 'ignore
-      shell-file-name "/bin/bash"
-      explicit-shell-file-name "/bin/bash")
+      shell-file-name "/usr/bin/fish"
+      explicit-shell-file-name "/usr/bin/fish")
 
 ;; set shell to bash so that shell prompt doesn't matter performance
 ;; improvements mentioned in:
