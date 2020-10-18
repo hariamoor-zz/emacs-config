@@ -119,7 +119,6 @@
   :config
   (setq lsp-rust-server 'rust-analyzer)
   (define-key lsp-mode-map (kbd "C-c C-l") lsp-command-map)
-  (require 'lsp-clients)
   :hook
   (lsp-mode . (lambda ()
 		(let ((lsp-keymap-prefix "C-c C-l"))
